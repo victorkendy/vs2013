@@ -31,11 +31,22 @@ namespace Banco
             textoSaldo.Text = Convert.ToString(c.Saldo);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void botaoDeposito_Click(object sender, EventArgs e)
         {
             string valorDigitado = textoValor.Text;
             double valorOperacao = Convert.ToDouble(valorDigitado);
             this.c.Deposita(valorOperacao);
+
+            textoSaldo.Text = Convert.ToString(this.c.Saldo);
+        }
+
+        private void botaoSaque_Click(object sender, EventArgs e)
+        {
+            string valorDigitado = textoValor.Text;
+            double valorOperacao = Convert.ToDouble(valorDigitado);
+            this.c.Saca(valorOperacao);
+
+            textoSaldo.Text = Convert.ToString(this.c.Saldo);
         }
     }
 }
