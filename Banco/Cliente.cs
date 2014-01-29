@@ -9,10 +9,10 @@ namespace Banco
     {
         private string p;
 
-        public Cliente(string p)
+        public Cliente(string nome)
         {
             // TODO: Complete member initialization
-            this.Nome = p;
+            this.Nome = nome;
         }
 
         public string Nome { get; set; }
