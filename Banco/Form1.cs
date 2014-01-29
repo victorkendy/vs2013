@@ -16,5 +16,17 @@ namespace Banco
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Conta c = new Conta();
+            c.Numero = 1;
+            Cliente cliente = new Cliente("victor");
+            c.Titular = cliente;
+
+            textoTitular.Text = c.Titular.Nome;
+            textoNumero.Text = Convert.ToString(c.Numero);
+            textoSaldo.Text = Convert.ToString(c.Saldo);
+        }
     }
 }
