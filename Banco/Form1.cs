@@ -34,11 +34,16 @@ namespace Banco
             this.contas[2] = new ContaCorrente();
             this.contas[2].Titular = new Cliente("osni");
             this.contas[2].Numero = 3;
+
+            foreach (Conta conta in contas)
+            {
+                comboContas.Items.Add("titular: " + conta.Titular.Nome);
+            }
         }
 
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
-            int indice = Convert.ToInt32(textoIndice.Text);
+            int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
             double valor = Convert.ToDouble(textoValor.Text);
             selecionada.Deposita(valor);
@@ -47,16 +52,16 @@ namespace Banco
 
         private void botaoSaque_Click(object sender, EventArgs e)
         {
-            int indice = Convert.ToInt32(textoIndice.Text);
+            int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
             double valor = Convert.ToDouble(textoValor.Text);
             selecionada.Saca(valor);
             textoSaldo.Text = Convert.ToString(selecionada.Saldo);
         }
 
-        private void botaoBusca_Click(object sender, EventArgs e)
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int indice = Convert.ToInt32(textoIndice.Text);
+            int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
             textoNumero.Text = Convert.ToString(selecionada.Numero);
             textoTitular.Text = selecionada.Titular.Nome;
