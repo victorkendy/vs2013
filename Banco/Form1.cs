@@ -17,36 +17,36 @@ namespace Banco
             InitializeComponent();
         }
 
-        private Conta c;
+        private Conta conta;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.c = new Conta();
-            c.Numero = 1;
+            this.conta = new ContaPoupanca();
+            conta.Numero = 1;
             Cliente cliente = new Cliente("victor");
-            c.Titular = cliente;
+            conta.Titular = cliente;
 
-            textoTitular.Text = c.Titular.Nome;
-            textoNumero.Text = Convert.ToString(c.Numero);
-            textoSaldo.Text = Convert.ToString(c.Saldo);
+            textoTitular.Text = conta.Titular.Nome;
+            textoNumero.Text = Convert.ToString(conta.Numero);
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
         }
 
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
             string valorDigitado = textoValor.Text;
             double valorOperacao = Convert.ToDouble(valorDigitado);
-            this.c.Deposita(valorOperacao);
+            this.conta.Deposita(valorOperacao);
 
-            textoSaldo.Text = Convert.ToString(this.c.Saldo);
+            textoSaldo.Text = Convert.ToString(this.conta.Saldo);
         }
 
         private void botaoSaque_Click(object sender, EventArgs e)
         {
             string valorDigitado = textoValor.Text;
             double valorOperacao = Convert.ToDouble(valorDigitado);
-            this.c.Saca(valorOperacao);
+            this.conta.Saca(valorOperacao);
 
-            textoSaldo.Text = Convert.ToString(this.c.Saldo);
+            textoSaldo.Text = Convert.ToString(this.conta.Saldo);
         }
     }
 }
