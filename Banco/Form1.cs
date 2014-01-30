@@ -17,36 +17,50 @@ namespace Banco
             InitializeComponent();
         }
 
-        private Conta conta;
+        private Conta[] contas;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.conta = new ContaCorrente();
-            conta.Numero = 1;
-            Cliente cliente = new Cliente("victor");
-            conta.Titular = cliente;
+            this.contas = new Conta[3];
 
-            textoTitular.Text = conta.Titular.Nome;
-            textoNumero.Text = Convert.ToString(conta.Numero);
-            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            this.contas[0] = new Conta();
+            this.contas[0].Titular = new Cliente("victor");
+            this.contas[0].Numero = 1;
+
+            this.contas[1] = new ContaPoupanca();
+            this.contas[1].Titular = new Cliente("mauricio");
+            this.contas[1].Numero = 2;
+
+            this.contas[2] = new ContaCorrente();
+            this.contas[2].Titular = new Cliente("osni");
+            this.contas[2].Numero = 3;
         }
 
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
-            string valorDigitado = textoValor.Text;
-            double valorOperacao = Convert.ToDouble(valorDigitado);
-            this.conta.Deposita(valorOperacao);
-
-            textoSaldo.Text = Convert.ToString(this.conta.Saldo);
+            int indice = Convert.ToInt32(textoIndice.Text);
+            Conta selecionada = this.contas[indice];
+            double valor = Convert.ToDouble(textoValor.Text);
+            selecionada.Deposita(valor);
+            textoSaldo.Text = Convert.ToString(selecionada.Saldo);
         }
 
         private void botaoSaque_Click(object sender, EventArgs e)
         {
-            string valorDigitado = textoValor.Text;
-            double valorOperacao = Convert.ToDouble(valorDigitado);
-            this.conta.Saca(valorOperacao);
+            int indice = Convert.ToInt32(textoIndice.Text);
+            Conta selecionada = this.contas[indice];
+            double valor = Convert.ToDouble(textoValor.Text);
+            selecionada.Saca(valor);
+            textoSaldo.Text = Convert.ToString(selecionada.Saldo);
+        }
 
-            textoSaldo.Text = Convert.ToString(this.conta.Saldo);
+        private void botaoBusca_Click(object sender, EventArgs e)
+        {
+            int indice = Convert.ToInt32(textoIndice.Text);
+            Conta selecionada = this.contas[indice];
+            textoNumero.Text = Convert.ToString(selecionada.Numero);
+            textoTitular.Text = selecionada.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(selecionada.Saldo);
         }
     }
 }
