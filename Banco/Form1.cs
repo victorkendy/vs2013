@@ -21,7 +21,7 @@ namespace Banco
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.conta = new ContaPoupanca();
+            this.conta = new ContaCorrente();
             conta.Numero = 1;
             Cliente cliente = new Cliente("victor");
             conta.Titular = cliente;
