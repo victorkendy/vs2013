@@ -40,8 +40,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.botaoSaque = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.comboContas = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.botaoNovaConta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -160,15 +161,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Busca de Conta";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Escolha a Conta";
-            // 
             // comboContas
             // 
             this.comboContas.FormattingEnabled = true;
@@ -178,11 +170,31 @@
             this.comboContas.TabIndex = 1;
             this.comboContas.SelectedIndexChanged += new System.EventHandler(this.comboContas_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Escolha a Conta";
+            // 
+            // botaoNovaConta
+            // 
+            this.botaoNovaConta.Location = new System.Drawing.Point(29, 238);
+            this.botaoNovaConta.Name = "botaoNovaConta";
+            this.botaoNovaConta.Size = new System.Drawing.Size(75, 23);
+            this.botaoNovaConta.TabIndex = 11;
+            this.botaoNovaConta.Text = "Nova Conta";
+            this.botaoNovaConta.UseVisualStyleBackColor = true;
+            this.botaoNovaConta.Click += new System.EventHandler(this.botaoNovaConta_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 243);
+            this.ClientSize = new System.Drawing.Size(300, 282);
+            this.Controls.Add(this.botaoNovaConta);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -212,6 +224,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox comboContas;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button botaoNovaConta;
     }
 }
 

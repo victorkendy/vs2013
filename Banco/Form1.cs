@@ -16,29 +16,27 @@ namespace Banco
         {
             InitializeComponent();
         }
-
+        private int numeroDeContas;
         private Conta[] contas;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.contas = new Conta[3];
+            this.contas = new Conta[10];
 
-            this.contas[0] = new Conta();
-            this.contas[0].Titular = new Cliente("victor");
-            this.contas[0].Numero = 1;
+            Conta c1 = new Conta();
+            c1.Titular = new Cliente("victor");
+            c1.Numero = 1;
+            this.AdicionaConta(c1);
 
-            this.contas[1] = new ContaPoupanca();
-            this.contas[1].Titular = new Cliente("mauricio");
-            this.contas[1].Numero = 2;
+            Conta c2 = new ContaPoupanca();
+            c2.Titular = new Cliente("mauricio");
+            c2.Numero = 2;
+            this.AdicionaConta(c2);
 
-            this.contas[2] = new ContaCorrente();
-            this.contas[2].Titular = new Cliente("osni");
-            this.contas[2].Numero = 3;
-
-            foreach (Conta conta in contas)
-            {
-                comboContas.Items.Add("titular: " + conta.Titular.Nome);
-            }
+            Conta c3 = new ContaCorrente();
+            c3.Titular = new Cliente("osni");
+            c3.Numero = 3;
+            this.AdicionaConta(c3);
         }
 
         private void botaoDeposito_Click(object sender, EventArgs e)
@@ -66,6 +64,19 @@ namespace Banco
             textoNumero.Text = Convert.ToString(selecionada.Numero);
             textoTitular.Text = selecionada.Titular.Nome;
             textoSaldo.Text = Convert.ToString(selecionada.Saldo);
+        }
+
+        public void AdicionaConta(Conta conta)
+        {
+            this.contas[this.numeroDeContas] = conta;
+            this.numeroDeContas++;
+            comboContas.Items.Add("titular: " + conta.Titular.Nome);
+        }
+
+        private void botaoNovaConta_Click(object sender, EventArgs e)
+        {
+            FormCadastroConta formularioCadastro = new FormCadastroConta(this);
+            formularioCadastro.ShowDialog();
         }
     }
 }
