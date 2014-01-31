@@ -12,5 +12,10 @@ namespace Banco
         {
             this.Saldo -= valorOperacao + 0.10;
         }
+
+        public override void Deposita(double valorOperacao)
+        {
+            this.Saldo += valorOperacao;
+        }
     }
 }

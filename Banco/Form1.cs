@@ -23,7 +23,7 @@ namespace Banco
         {
             this.contas = new Conta[10];
 
-            Conta c1 = new Conta();
+            Conta c1 = new ContaPoupanca();
             c1.Titular = new Cliente("victor");
             c1.Numero = 1;
             this.AdicionaConta(c1);

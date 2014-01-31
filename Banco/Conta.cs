@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Banco
 {
-    public class Conta
+    public abstract class Conta
     {
         public int Numero { get; set; }
 
@@ -13,14 +13,8 @@ namespace Banco
 
         public Cliente Titular { get; set; }
 
-        public virtual void Deposita(double valorOperacao)
-        {
-            this.Saldo += valorOperacao;
-        }
+        public abstract void Deposita(double valorOperacao);
 
-        public virtual void Saca(double valorOperacao)
-        {
-            this.Saldo -= valorOperacao;
-        }
+        public abstract void Saca(double valorOperacao);
     }
 }
