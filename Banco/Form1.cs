@@ -78,5 +78,21 @@ namespace Banco
             FormCadastroConta formularioCadastro = new FormCadastroConta(this);
             formularioCadastro.ShowDialog();
         }
+
+        private void botaoImpostos_Click(object sender, EventArgs e)
+        {
+            ContaCorrente conta = new ContaCorrente();
+            conta.Deposita(200.0);
+
+            SeguroDeVida sv = new SeguroDeVida();
+
+            TotalizadorDeTributos totalizador = new TotalizadorDeTributos();
+            totalizador.Adiciona(conta);
+
+            MessageBox.Show("Total = " + totalizador.Total);
+
+            totalizador.Adiciona(sv);
+            MessageBox.Show("Total = " + totalizador.Total);
+        }
     }
 }
