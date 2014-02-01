@@ -23,9 +23,13 @@ namespace Banco
         {
             ContaCorrente novaConta = new ContaCorrente();
             novaConta.Titular = new Cliente(textoTitular.Text);
-            novaConta.Numero = Convert.ToInt32(textoNumero.Text);
 
             this.formPrincipal.AdicionaConta(novaConta);
+        }
+
+        private void FormCadastroConta_Load(object sender, EventArgs e)
+        {
+            textoNumero.Text = Convert.ToString(Conta.ProximoNumero());
         }
     }
 }
