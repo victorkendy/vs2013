@@ -17,12 +17,11 @@ namespace Banco
         {
             InitializeComponent();
         }
-        private int numeroDeContas;
-        private Conta[] contas;
+        private List<Conta> contas;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.contas = new Conta[10];
+            this.contas = new List<Conta>();
 
             Conta c1 = new ContaPoupanca();
             c1.Titular = new Cliente("victor");
@@ -42,8 +41,7 @@ namespace Banco
 
         private void botaoDeposito_Click(object sender, EventArgs e)
         {
-            int indice = comboContas.SelectedIndex;
-            Conta selecionada = this.contas[indice];
+            Conta selecionada = (Conta)comboContas.SelectedItem;
             double valor = Convert.ToDouble(textoValor.Text);
             try
             {
@@ -59,8 +57,7 @@ namespace Banco
 
         private void botaoSaque_Click(object sender, EventArgs e)
         {
-            int indice = comboContas.SelectedIndex;
-            Conta selecionada = this.contas[indice];
+            Conta selecionada = (Conta)comboContas.SelectedItem;
             double valor = Convert.ToDouble(textoValor.Text);
             try
             {
@@ -84,9 +81,8 @@ namespace Banco
 
         public void AdicionaConta(Conta conta)
         {
-            this.contas[this.numeroDeContas] = conta;
-            this.numeroDeContas++;
-            comboContas.Items.Add("titular: " + conta.Titular.Nome);
+            this.contas.Add(conta);
+            comboContas.Items.Add(conta);
         }
 
         private void botaoNovaConta_Click(object sender, EventArgs e)

@@ -29,5 +29,10 @@ namespace Banco.Contas
         {
             return numeroDeContas + 1;
         }
+
+        public override string ToString()
+        {
+            return "titular: " + this.Titular.Nome;
+        }
     }
 }
