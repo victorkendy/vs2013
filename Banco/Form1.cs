@@ -18,9 +18,11 @@ namespace Banco
             InitializeComponent();
         }
         private List<Conta> contas;
+        private Dictionary<string, Conta> dicionario;
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.dicionario = new Dictionary<string, Conta>();
             this.contas = new List<Conta>();
 
             Conta c1 = new ContaPoupanca();
@@ -83,6 +85,8 @@ namespace Banco
         {
             this.contas.Add(conta);
             comboContas.Items.Add(conta);
+
+            this.dicionario.Add(conta.Titular.Nome, conta);
         }
 
         private void botaoNovaConta_Click(object sender, EventArgs e)
@@ -105,6 +109,14 @@ namespace Banco
 
             totalizador.Adiciona(sv);
             MessageBox.Show("Total = " + totalizador.Total);
+        }
+
+        private void botaoBusca_Click(object sender, EventArgs e)
+        {
+            string nomeTitular = textoBuscaTitular.Text;
+            Conta conta = this.dicionario[nomeTitular];
+
+            comboContas.SelectedItem = conta;
         }
     }
 }
