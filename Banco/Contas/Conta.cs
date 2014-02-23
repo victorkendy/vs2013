@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Banco
+namespace Banco.Contas
 {
     public abstract class Conta
     {
