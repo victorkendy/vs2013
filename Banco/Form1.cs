@@ -44,8 +44,16 @@ namespace Banco
             int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
             double valor = Convert.ToDouble(textoValor.Text);
-            selecionada.Deposita(valor);
-            textoSaldo.Text = Convert.ToString(selecionada.Saldo);
+            try
+            {
+                selecionada.Deposita(valor);
+                textoSaldo.Text = Convert.ToString(selecionada.Saldo);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("Argumento Inválido");
+            }
+            
         }
 
         private void botaoSaque_Click(object sender, EventArgs e)
@@ -53,7 +61,14 @@ namespace Banco
             int indice = comboContas.SelectedIndex;
             Conta selecionada = this.contas[indice];
             double valor = Convert.ToDouble(textoValor.Text);
-            selecionada.Saca(valor);
+            try
+            {
+                selecionada.Saca(valor);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                MessageBox.Show("Saldo Insuficiente");
+            }
             textoSaldo.Text = Convert.ToString(selecionada.Saldo);
         }
 
