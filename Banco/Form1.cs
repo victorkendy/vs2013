@@ -118,5 +118,11 @@ namespace Banco
 
             comboContas.SelectedItem = conta;
         }
+
+        private void botaoRelatorio_Click(object sender, EventArgs e)
+        {
+            FormRelatorios form = new FormRelatorios(this.contas);
+            form.ShowDialog();
+        }
     }
 }
